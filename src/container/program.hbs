@@ -1,0 +1,78 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<main>
+	{{#with program.excursion}}
+	<div>
+		<h1>{{name}}</h1>
+		<h2>{{location.city}}, {{location.country}} - {{date}}</h2>
+	</div>
+	<hr>
+	<br>
+	<h3>Program:</h3>
+	<br>
+	{{#each program}}
+	<span>
+		<b>{{name}} </b>
+		({{type}}) - {{duration}} 
+		<br>
+		{{#with details}}
+		{{#if museum}}
+		<span>{{museum.name}} <address>({{museum.location.address}}, {{museum.location.city}},
+				{{museum.location.country}})</address></span><br>
+		{{else}}
+		<span>{{venue.name}} <address>({{venue.location.address}}, {{venue.location.city}}, {{venue.location.country}})
+			</address></span><br>
+		{{/if}}
+		<details>
+            <br>
+			<summary>
+                
+				{{#if performers}}
+				<strong><em>Performers</em></strong>
+				{{else}} 
+				<strong><em>Exhibits</em></strong>
+				{{/if}}
+			</summary>
+			{{#if museum}}
+			{{#each museum.exhibits}}
+			<span>
+                <li>
+				<cite>{{name}}</cite>
+				<br>
+				{{#if artist}}{{artist}}<br>{{/if}}
+				<article>{{description}}</article>
+				{{#if audio_guide}}
+				{{/if}}
+                </li>
+			</span>
+			
+			<br>
+			{{/each}}
+			{{else}}
+			{{#each performers}}
+			<span>
+                <li>
+				<cite>{{name}}</cite> - {{type}}
+                </li><br>
+			</span>
+			{{/each}}
+			{{/if}}
+		</details>
+		<br>
+		<br>
+		{{#with guide}}
+		<span>guide: {{name}} {{rating}}</span><br>
+		<span>language: {{language}}</span><br>
+		{{/with}}
+		{{/with}}
+	</span>
+	<br>
+	<hr>
+
+	{{/each}}
+    
+	{{/with}}
+</main>
