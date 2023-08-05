@@ -1,0 +1,199 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<main>
+	<br>
+    <div>
+        <h1> {{name}} <span>{{price}}$</span></h1>
+    </div>
+    <hr>
+	<section>
+    <div>
+        <h3>{{description}}</h3>
+        <p>{{category}}</p>
+    </div>
+    </section>
+	<section>
+		{{#with features}}
+        <p>
+           
+                <b>Processor</b>
+            </button>
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleTwo"
+                aria-expanded="false" aria-controls="collapseExampleTwo">
+                <b>Memory</b>
+            </button>
+            <button class="btn btn-success" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExampleThree" aria-expanded="false" aria-controls="collapseExampleThree">
+                <b>Storage</b>
+            </button>
+			<button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleFour"
+                aria-expanded="false" aria-controls="collapseExampleFour">
+                <b>Display</b>
+            </button>
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleFive"
+                aria-expanded="false" aria-controls="collapseExampleFive">
+                <b>Graphics</b>
+            </button>
+            <button class="btn btn-info" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExampleSix" aria-expanded="false" aria-controls="collapseExampleSix">
+                <b>Ports</b>
+            </button>
+			<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleSeven"
+                aria-expanded="false" aria-controls="collapseExampleSeven">
+                <b>Battery</b>
+            </button>
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleEight"
+                aria-expanded="false" aria-controls="collapseExampleEight">
+                <b>Weight</b>
+            </button>
+            <button class="btn btn-success" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExampleNine" aria-expanded="false" aria-controls="collapseExampleNine">
+                <b>Dimensions</b>
+            </button>
+			<button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleTen"
+                aria-expanded="false" aria-controls="collapseExampleTen">
+                <b>Operating system</b>
+            </button>
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleEleven"
+                aria-expanded="false" aria-controls="collapseExampleEleven">
+                <b>Accessories</b>
+            </button>
+        </p>
+        <div>
+            <div>
+                {{#with processor}}
+                <h5>Processor</h5>
+                <ul>
+                    <li><b>Brand: </b>{{brand}}</li>
+                    <li><b>Model: </b>{{model}}</li>
+                    <li><b>Speed: </b>{{speed}}</li>
+                    <li><b>Cores: </b>{{cores}}</li>
+                    <li><b>Cache: </b>{{cache}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+        <div>
+            <div>
+                {{#with memory}}
+                <h5>Memory</h5>
+                <ul>
+                    <li><b>Type: </b>{{type}}</li>
+                    <li><b>Size: </b>{{size}}</li>
+                    <li><b>Speed: </b>{{speed}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+        <div>
+            <div>
+                {{#with storage}}
+                <h5>Storage</h5>
+                <ul>
+                    <li><b>Type: </b>{{type}}</li>
+                    <li><b>Size: </b>{{size}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+		<div>
+            <div>
+                {{#with display}}
+                <h5>Display</h5>
+                <ul>
+                    <li><b>Size: </b>{{size}}</li>
+                    <li><b>Resolution: </b>{{resolution}}</li>
+                    <li><b>Technology: </b>{{technology}}</li>
+                    <li><b>Color space: </b>{{color_space}}</li>
+                    <li><b>Brightness: </b>{{brightness}}</li>
+					<li><b>Refresh rate: </b>{{refresh_rate}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+        <div>
+            <div>
+                {{#with graphics}}
+                <h5>Graphics</h5>
+                <ul>
+                    <li><b>Brand: </b>{{brand}}</li>
+                    <li><b>Model: </b>{{model}}</li>
+                    <li><b>Memory: </b>{{memory}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+        <div>
+            <div>
+                <h5>Ports</h5>
+				{{#each ports}}
+                <ul>
+                    <li><b>Type: </b>{{type}}</li>
+                    <li><b>count: </b>{{count}}</li>		
+					{{#if features}}<li><b>features: </b>{{features.[0]}} | {{features.[1]}} | {{features.[2]}} | {{features.[3]}}</li>{{/if}}	
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+		<div>
+            <div>
+                {{#with battery}}
+                <h5>Battery</h5>
+                <ul>
+                    <li><b>Type: </b>{{type}}</li>
+                    <li><b>Capacity: </b>{{capacity}}</li>
+                    <li><b>Life: </b>{{life}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+        <div>
+            <div>
+                <h5>Weight</h5>
+                <ul>
+                    <li><b>Weight: </b>{{weight}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                {{#with dimensions}}
+                <h5>Dimensions</h5>
+                <ul>
+                    <li><b>Height: </b>{{height}}</li>
+                    <li><b>Width: </b>{{width}}</li>
+					<li><b>Depth: </b>{{depth}}</li>
+                </ul>
+                {{/with}}
+            </div>
+        </div>
+		<div>
+            <div>
+                <h5>Operating system</h5>
+                <ul>
+                    <li><b>Operating system: </b>{{operating_system}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                {{#each accessories}}
+                <h5>Accessories</h5>
+                <ul>
+                    <li><b>Name: </b>{{name}}</li>
+                    <li><b>Price: </b>{{price}}</li>
+                </ul>
+                {{/each}}
+            </div>
+        </div>
+    {{/with}}
+	</section>
+</main>
+
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
