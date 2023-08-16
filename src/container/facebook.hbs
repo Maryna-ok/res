@@ -1,0 +1,178 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+<main>
+    <br>
+    <div>
+        <h1> {{name}}</h1>
+    </div>
+    <hr>
+    <section>
+        {{#each users}}
+        <div>
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+   {{name}}
+  </button>
+  <br>
+  <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                <br>
+                <br>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Friends:</button></li>
+         {{#each friends}}
+                
+                <span>{{name}}</span>
+                    <br>
+                    <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                    <br>
+                    <button type="button" class="btn btn-link">{{name}} Friend:</button>
+                    <br>
+
+                    {{#each mutual_friends}}
+                      <span> {{name}}</span>
+                       <br> 
+                        
+                        <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                        <br>
+                        <span>{{name}} Friends:</span>
+                    
+
+                    {{/each}} 
+                    <br>
+    <li><button class="dropdown-item" type="button">Groups:</button></li>
+     {{#if groups}}
+                    <br>
+                    <span>{{name}}</span>
+                    <br>
+                    {{#each groups}}
+                    <span>{{name}}</span>
+                         <br>
+                        <span>{{id}}. <b>{{name}}</b>
+                            <br>
+                            ({{description}})</span>
+                        <br>
+                        <button type="button" class="btn btn-link">{{name}} Members:</button>
+                        <br>
+                        {{#each members}}
+                        <span>{{name}}</span>
+                            <br>
+                            <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                        
+                        {{/each}}
+                    
+                    {{/each}}
+                    {{/if}}
+                
+                {{/each}}
+                {{#if groups}}
+                <br>
+                
+                {{#each groups}}
+               <span>{{name}}</span>
+                    <br>
+                    <span>{{id}}. <b>{{name}}</b>
+                        <br>
+                        ({{description}})</span>
+                    <br>
+                    <button type="button" class="btn btn-link">{{name}} Members:</button>
+                    <br>
+                    
+                    
+                    {{#each members}}
+                      <span>{{name}}</span>
+                        <br>
+                        <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                    
+                    {{/each}}
+                
+                {{/each}}
+                {{/if}}
+            
+            <br>
+            <hr>
+            <br>
+        </div>
+        {{/each}}
+    </section>
+</main>
+    
+  </ul>
+</div>
+                {{!--<summary>{{name}}</summary>
+                <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                <br>
+                <br>
+                <span>Friends:</span>
+                {{#each friends}}
+                
+                
+                    <summary>{{name}}</summary>
+                    <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                    <br>
+                    <span>{{name}} Friends:</span>
+
+                    {{#each mutual_friends}}
+                    
+                        <summary>{{name}}</summary>
+                        <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                        <br>
+                        <span>{{name}} Friends:</span>
+                    
+
+                    {{/each}}--}}
+                   {{!--  {{#if groups}}
+                    <br>
+                    <span>Groups:</span>
+                    {{#each groups}}
+                    
+                        <summary>{{name}}</summary>
+                        <span>{{id}}. <b>{{name}}</b>
+                            <br>
+                            ({{description}})</span>
+                        <br>
+                        <span>{{name}} Members:</span>
+                        {{#each members}}
+                        
+                            <summary>{{name}}</summary>
+                            <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                        
+                        {{/each}}
+                    
+                    {{/each}}
+                    {{/if}}
+                
+                {{/each}}
+                {{#if groups}}
+                <br>
+                <span>Groups:</span>
+                {{#each groups}}
+                
+                    <summary>{{name}}</summary>
+                    <span>{{id}}. <b>{{name}}</b>
+                        <br>
+                        ({{description}})</span>
+                    <br>
+                    <span>{{name}} Members:</span>
+                    {{#each members}}
+                    
+                        <summary>{{name}}</summary>
+                        <span>{{id}}. <b>{{name}}</b> ({{gender}}) age: {{age}}</span>
+                    
+                    {{/each}}
+                
+                {{/each}}
+                {{/if}}
+            
+            <br>
+            <hr>
+            <br>
+        </div>
+        {{/each}}
+    </section>
+</main>
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
