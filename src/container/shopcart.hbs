@@ -1,0 +1,105 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<main>
+	<header>
+  <nav>
+    <div class="card py-3 mb-5">
+      {{#with navigation}}
+      <ul class="nav">
+        {{#each links}}
+        <li class="nav-item">
+          <a class="nav-link {{#if @last}}disabled{{/if}}" href={{href}}>{{text}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{/with}}
+    </div>
+  </nav>
+</header>
+	<div name="headerTitle">
+		{{#with header}}
+		<h1>{{title}}</h1>
+		<button type="{{button.link}}" class="btn btn-outline-secondary">{{button.text}}</button>
+		{{/with}}
+	</div>
+	<hr class="my-5">
+	<section name="goodsBlock" class="row">
+		<div class="col-12">
+			{{#each goodsBlock}}
+			{{> cartGoodsItem}}
+			{{/each}}
+		</div>
+	</section>
+	<hr class="my-5">
+	<section name="total">
+		<div>
+			{{#with total}}
+			<h2>{{title}}</h2>
+			<p class="h1">{{amount}}</p>
+			<h6 class="mb-4">{{delivery}}</h6>
+			<div class="vstack gap-3 col-md-3">
+				{{#each buttons}}
+				<button type="{{link}}"
+					class="btn btn-{{#if isSuccess}}success{{else if isOutline}}outline-success{{/if}}">{{text}}</button>
+				{{/each}}
+			</div>
+			{{/with}}
+		</div>
+	</section>
+	<hr class="my-5">
+	<div name="OtherBlock" class="row">
+		<h2 class="text-center mb-3">{{goodsOtherBlock.title}}</h2>
+		{{#each goodsOtherBlock.cards}}
+		<div class="col-4">
+    <div class="card">
+        <img src={{image}} class="card-img-top" alt={{title}}>
+        <div class="card-body">
+            <h5 class="card-title">
+                {{title}}
+                {{#if isHot}}<span class="badge rounded-pill bg-warning">HOT!</span>{{/if}}
+                {{#if isNew}}<span class="badge rounded-pill bg-primary">NEW</span>{{/if}}
+            </h5>
+            <p class="card-text">{{description}}</p>
+        </div>
+    </div>
+</div>
+		{{/each}}
+	</div>
+	<hr class="my-5">
+	<section>
+    {{#with subscribe}}
+    <div class="card text-bg-dark">
+        <div class="card-body">
+            <h2 class="card-title">{{header}}</h2>
+            <p class="card-text">{{description}}</p>
+            <div class="vstack gap-3 col-md-3">
+                {{#each buttons}}
+                <a href={{link}} class="btn btn-primary">{{text}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/with}}
+</section>
+	<hr class="my-5">
+	<footer class="row">
+  {{#each footer}}
+  <div class="col-2">
+    <ul class="nav flex-column">
+      {{#each this}}
+      <li class="nav-item">
+        <a class="nav-link {{#if @last}}disabled{{/if}}" href={{link}}>{{text}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/each}}
+</footer>
+</main>
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
